@@ -1,3 +1,4 @@
+import { ContentSelector } from './ContentSelector';
 import { getFields } from "./utils/GetFields";
 
 // The body of this function will be execuetd as a content script inside the
@@ -5,12 +6,16 @@ import { getFields } from "./utils/GetFields";
 (function setPageBackgroundColor() {
   const fields = getFields() as HTMLElement[];
 
-  chrome.storage.sync.get("color", ({ color }) => {
-    for (let i = 0; i < fields.length; i++) {
-      const element = fields[i] as HTMLElement;
-      if(element) {
-        element.style.backgroundColor = 'red';
-      }
+  for (let i = 0; i < fields.length; i++) {
+    const element = fields[i] as HTMLElement;
+    if (element) {
+      // const cs = new ContentSelector(element)
+
+      // cs.init()
     }
-  });
-})()
+  }
+
+  // chrome.storage.sync.get("color", ({ color }) => {
+
+  // });
+})();
