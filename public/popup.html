@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="button.css">
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <button id="changeColor"></button>
+    <div class="popup__wrapper">
+      <button class="btn" id="getFieds">get fields</button>
+
+      <ul id="fields" class="fields">
+        <li class="fields__el fields__el--empty">
+          <p>No fields to show :'(</p>
+        </li>
+      </ul>
+    </div>
+
     <script src="popup.js"></script>
   </body>
 </html>

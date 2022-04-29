@@ -1,0 +1,32 @@
+
+.popup__wrapper {
+    width: 400px;
+}
+
+.btn {
+    text-align: center;
+    padding: .3em 1em;
+    white-space: nowrap;
+}
+
+.fields {
+    padding: 0;
+    list-style: 0;
+}
+
+.fields__el {
+    padding: .3em 1em;
+    margin-bottom: 1em;
+    background: rgb(230, 230, 230);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fields__el--empty {
+    justify-content: center;
+}
+
+.fields__el:last-child {
+    margin-bottom: 0;
+}
