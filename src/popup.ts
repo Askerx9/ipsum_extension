@@ -1,14 +1,5 @@
-// Initialize butotn
-let getFieds = document.getElementById("getFieds") as HTMLElement;
-
-// chrome.storage.sync.get("color", ({ color }) => {
-//   changeColor.style.backgroundColor = color;
-// });
-
-// When the button is clicked, inject setPageBackgroundColor into current page
-getFieds.addEventListener("click", async () => {
+( async function() {
   let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });  
-  console.log('yo');
   
   if(tab.id !== undefined) {
     chrome.scripting.executeScript({
@@ -16,31 +7,30 @@ getFieds.addEventListener("click", async () => {
       files: ['script.js'],
     });
   }
-});
+
+  chrome.runtime.onMessage.addListener((request) => {
+    showFieldsInPopup(request.fields)
+  })
+
+}())
 
 function showFieldsInPopup(fields: elStructure[]) {
 
   const fieldsArea = document.getElementById('fields') 
   if(!fieldsArea) {return}
-  
+
   fieldsArea.innerHTML = ''
   
   for (let i = 0; i < fields.length; i++) {
     const element = fields[i] as elStructure;
       fieldsArea.innerHTML += `
       <li class="fields__el">
-        <p>${element.label}</p>
+        <p>${element.label}<br><span>${element.type}</span></p>
         <button>fill in</button>
       </li>
       `
   }
 }
-
-chrome.runtime.onMessage.addListener((request) => {
-  console.log(request);
-  
-  showFieldsInPopup(request.fields)
-})
 
 
 

@@ -6,7 +6,7 @@ function getCkFields(originEl: HTMLElement, label=''): elStructure | boolean {
     const field = iframe.contentWindow?.document.querySelector("p") as HTMLElement;
 
     if (field !== undefined) {
-      return setElStructure(field, label, originEl, 'cke')
+      return setElStructure(field, label, originEl, 'CK Editor')
     }
   }
 
@@ -53,18 +53,5 @@ function setElStructure(el: HTMLElement, label: string = '', origin: HTMLElement
 (function setPageBackgroundColor() {
   const fields = getDomFields("input[type=text], textarea"); 
 
-  chrome.runtime.sendMessage({ action: "show", fields});
-  // const fieldsArea = document.getElementById('fields') 
-
-  // for (let i = 0; i < fields.length; i++) {
-  //   const element = fields[i] as elStructure;
-  //   console.log(element);
-  //   if(fieldsArea) {
-  //     fieldsArea.innerHTML += `
-  //     <li class="fields__el">
-  //       <p>${element.label}</p>
-  //       <button>fill in</button>
-  //     </li>
-  //     `
-  //   }
+  chrome.runtime.sendMessage({fields});
 })()
